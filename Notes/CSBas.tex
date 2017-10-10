@@ -1,0 +1,298 @@
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{lastpage}
+\usepackage{secdot}
+\usepackage{minted}
+\usepackage{parskip}  
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+
+% Definitionen auf neuer Zeile
+\setdescription{labelsep=\textwidth}
+  
+% Define 'variables'
+\newcommand{\noteDate}{2017-09-18}
+\newcommand{\subjectIdentifier}{BTI7061 CSBas}
+\newcommand{\subject}{Grundlagen der Informatik} 
+
+% Set header and footer content
+\pagestyle{fancy} 
+\fancyhead[L]{Severin Kaderli} 
+\fancyhead[C]{\subject{}}
+\fancyhead[R]{\noteDate{}}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage{} von \pageref{LastPage}}
+
+% Adjust width of header and footer line
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Move title up and don't show date
+\title{\vspace{-1.5cm}\subjectIdentifier{}\\\subject{}}
+\author{\vspace{-1.5cm}}
+\date{\vspace{-1.5cm}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+% Actual content
+\section{Modulinformationen}
+Dozent: Ueli Schrag \\
+Webseite des Kurses: http://www.benoist.ch/CSbasics/
+\subsection{Moodle}
+Kursunterlagen auf Moodle: https://moodle.bfh.ch/enrol/instances.php?id=15295 \\
+Access Key für Moodle: 1234\\\\
+Bücher für den Kurs sind hier im PDF-Format zu finden.\\
+Übungen für die jeweiligen Wochen sind auch hier zu finden.
+
+\section{Zahlensysteme}
+Verschiedene Zahlensysteme kann man anhand der Basis unterscheiden:
+\begin{itemize}
+  \item Binär (Basis 2)
+  \item Oktal (Basis 8)
+  \item Dezimal (Basis 10)
+  \item Hexadezimal (Basis 16)
+\end{itemize}
+Die Basis zeigt dabei an wie viele verschiedene Zustände ein Zahlensystem hat. Die Zustände werden dann auch jeweils mit verschiedenen Zeichen dargestellt. Die Basis zeigt somit auch an, wie viele Zeichen ein Zahlen-System benötigt. Die 0 als Zeichen stellt nichts dar und die 1 stellt die Einheit (Unit) dar.
+
+Z. B. hat das Dezimal-System zehn Zustände und zwar die Zahlen von 0 - 9. Hingegen hat das Binär-System mit der Basis 2 nur zwei Zustände und zwar die Zahlen 0 und 1.
+
+Eine Zahl im Dezimal-System wird folgendermassen dargestellt:
+\begin{equation}
+  327.56_{10} = 3 * 10^2 + 2 * 10^1 + 7 * 10^0 + 5 * 10^{-1} + 6 * 10^{-2}
+\end{equation}
+
+Nach dem selben Schema kann auch für andere Zahlensysteme vorgegangen werden. Hier ein Beispiel für ein Zahlensystem mit der Basis 3:
+\begin{equation}
+  1022.102_{3} = 1 * 3^3 + 0 * 3^2 + 2 * 3^1 + 2 * 3^0 + 1 * 3^{-1} + 0 * 3^{-2} + 2 * 3^{-3} = 33.407_{10}
+\end{equation}
+
+Diese Schreibweise hat auch den Vorteil, dass man die Zahl einen beliebigen Zahlensystemes in eine Dezimalzahl umrechnen kann. Die obige Zahl $1022.102_{3}$ wird somit, wenn man den Ausdruck ausrechnet zu $33.407_{10}$ im Dezimal-System.
+
+Auf diese Weise kann so Zahlen in einem beliebigen Zahlensystem darstellen und man erhält jeweils direkt den Wert im Dezimal-System. Die Zahl $56.7_{x}$ mit der Basis $x$ wird folgendermassen dargestellt.
+\begin{equation}
+  56.7_{x} = 5 * x^{1} + 6 * x^{0} + 7 * x^{-1}
+\end{equation}
+
+\subsection{Andere Zahlensysteme}
+Neben dem oben erwähnten "Prinzip" gibt es auch noch andere Zahlensysteme. Diese sind aber in der heutien Zeit nicht mehr wichtig und relevant:
+\begin{itemize}
+  \item Römische Zahlen 
+\end{itemize}
+
+\subsection{Oktal}
+Das Oktal-System ist das Zahlensystem mit der Basis 8. Also werden die Zeichen 0 - 7 verwendet. Nachfolgend ein Beispiel für eine oktale Zahl.
+
+\begin{equation}
+  76225_{8} = 7 * 8^{4} + 6 * 8^{3} + 2 * 8^{2} + 2 * 8^{1} + 5 * 8^{0} = 31893_{10}
+\end{equation}
+
+\subsection{Hexadezimal}
+Das Hexadezimal-System ist das Zahlensystem mit der Basis 16. Es werden die Zeichen 0 -9 verwendet und zusätzlich auch noch die Zeichen A, B, C, D, E und F. Die Zeichen A - F stehen dabei für die Zahlen 10 - 15. Nachfolgend ein Beispiel für eine Zahl im Hexadezimal-System.
+
+\begin{equation}
+  3C0A9_{16} = 3 * 16^{4} + 12 * 16^{3} + 0 * 16^{2} + 10 * 16^{1} + 9 * 10^{0} = 245929_{10}
+\end{equation}
+
+\subsection{Binär}
+Das Binär-System ist das Zahlensystem mit der Basis 2. Dadurch werden nur die Zeichen 0 und 1 benötigt.
+
+\begin{equation}
+  110_{2} = 1 * 2^{2} + 1* 2^{1} + 0 * 2^{0} = 6_{10}
+\end{equation}
+
+Vom Binär-System kann man einfach in ein anders Zahlensystem mit einer Basis von einer zweier Potenz (4, 8, 16) umrechnen. Dazu nimmt man je nach Basis "Pakete" von der Binär-Zahl und rechnet diese in die Basis um. Für die 4er-Basis nimmt man 2er-Pakete, für die 8er-Basis nimmt man 3er-Pakete und für die 16er-Basis nimmt man 4er-Pakete. 
+
+\begin{equation}
+  10101111.10101101_{2} = 2233.2231_{4} = 257.532_{8} = AF.AD_{16}
+\end{equation}
+
+\section{Computer}
+\subsection{Speicher}
+\subsubsection{Stack}
+Ein "Stapel" im Speicher. Er funktioniert nach dem last-in-first-out Prinzip. Der Stackpointer (SP) zeigt auf die Adresse des Spitzes des Stacks.
+
+Die zwei Funktionen, die man mit dem Stack benutzen kann sind PUSH und POP. Mit PUSH kann man einen Wert auf den Stack "legen" und mit POP entfernt man den obersten Wert des Stacks. 
+
+\subsubsection{Protected Mode Flat Model}
+Das heute verbreite Model für den Speicher. Das Betriebssystem hat hier eine grössere Kontroller über den Speicher als früher. Das Betriebssystem stellt jedem Programm einen Speicherbereich zur Verfügung. Dadurch kann ein Programm nicht auf eine beliebige Speicheradresse zugreifen und unter Umständen das System zerstören.
+
+\subsection{CPU}
+Die CPU kann nur Befehle ausführen, die in ihrem Instruktionssatz beschrieben ist. Instruktionen sind dabei einfach eine Folge von Binären Daten mit denen die CPU umgehen kann. Diese Instruktionen nennt man auch OpCodes.
+
+Die CPU führt jeweils den Befehl an der Adresse aus zu der der IP (Instruction Pointer) hinzeigt. Nach dem Ausführen des Befehls wird der Instruction Pointer an die nächste Adresse mit einem Befehl verschoben. Den IP kann man auch manuell anpassen um zu einer bestimmten Stelle im Programm zu springen.
+
+\subsection{Register}
+Register sind der Datenspeicher mit dem die CPU arbeitet. Der Zugriff zu Register ist sehr schnell.
+
+Register haben keine Adresse sondern einen Namen (EAX, EDI, R9). Die Register können entweder 8, 16, 32 oder 64 Bit sein auf einem 64-Bit CPU. Ein paar Register haben eine spezielle Funktion, für die sie zuständig sind.
+
+\subsection{Betriebssystem}
+Das Betriebssystem ist für basis Funktionen wie Input und Output zuständig. Heutzutage sind sie auch für das Verwalten des Speichers und für die Multitask-Fähigkeit zuständig. Im Grunde ist das Betriebssystem auch nur ein Programm welches im Speicher hinterlegt ist.
+
+\subsection{Zahlendarstellung im Computer}
+\subsubsection{Negative Zahlen}
+Man kann negative Zahlen auf mehrere Arten darstellen die beste Methode ist dabei das Zweierkomplement.
+
+Dazu geht man folgendermassen vor um eine positive Zahl in die passende negative Zahl umzuwandeln:
+\begin{enumerate}
+  \item Den Wert der positiven Zahl nehmen
+  \item Das Einerkomplement bilden (Invertieren, NOT-Operation)
+  \item Mit eins addieren
+\end{enumerate}
+
+{\bf Beispiel}:\\
+Der Binärwert von $7$ ist $0000 0111$. Man invertiert diesen Wert um das Einerkomplement zu erhalten: $1111 1000$. Schlussendlich addiert man noch eins zu diesem Wert um das Zweierkomplement zu erhalten: $1111 1001$
+
+Eine Addition kann man im Zweierkomplement ohne Problem durchführen. Für eine Substraktion führt man auch eine Addition aus, einfach mit dem Zweierkomplement des Subtrahenden. Das funktioniert weil $10 - 3 = 10 + (-3)$.
+
+\subsubsection{Kommazahlen}
+Nach dem IEEE 754 Standard werden die Kommazahlen binär kodiert. Das erste Bit ist dafür für das Vorzeichen zuständig. Die nächsten 11 Bits sind für den Exponenten und die letzten 52 Bits sind für die Mantisse zuständig. Je nach Standard können die Bit-Anzahl variieren aber im Prinzip funktioniert es immer gleich.
+
+
+{\bf Beispiel}:\\
+Man möchte die Zahl $326.78 * 10^{0}$ nach dem IEEE 754 Standard kodieren. Zuerst normalisiert man die Zahl so, dass sie nur in Nachkommastellen ist. Also wird sie zu $0.326.78 * 10^{3}$
+
+Der Exponent ist hier dabei nicht im Zweierkomplement hinterlegt sondern in der sogenannten "Biased Form". Für diese Form muss man zuerst einen Biased Faktor berechnen. Dieser berechnet sich durch die Formel $2^{n-1}-1 = 127$ wobei $n$ die Anzahl Bits für den Exponenten ist. Im Falle, wenn der Exponent aus 8 Bits besteht ist der Biased Faktor $2^{7} -1 = 127$.
+
+
+
+\newpage
+\section{Terminologie}
+\begin{description}
+  \item[Paragraph] Eine Gruppe von 16 Bytes.
+  \item[Nibble] Eine Gruppe von 4 Bit.
+  \item[Byte] Eine Gruppe von 8 Bit.
+  \item[Word] Eine Gruppe von 16 Bit oder 2 Bytes.
+  \item[Double word] Eine Gruppe von 4 Bytes.
+  \item[Quad word] Eine Gruppe von 8 Bytes.
+\end{description}
+
+\newpage
+\section{Übungen}
+\subsection{Basen umrechnen}
+\begin{enumerate}[a.)]
+  \item $AB2.EF_{16} \rightarrow X_{10} \hfill \approx 2738.933_{10}$
+  \item $AB.E1_{16} \rightarrow X_{8} \hfill = 1253.702_{8}$ 
+  \item $AB.E1_{16} \rightarrow X_{4} \hfill = 2223.2301_{4}$
+  \item $253.51_{10} \rightarrow X_{16} \hfill \approx FD.828F_{16}$
+  \item $233.81_{10} \rightarrow X_{8} \hfill \approx 351.63_{8}$
+  \item $123.51_{16} \rightarrow X_{2} \hfill = 0001 0010 0011.0101 0001_{2}$
+  \item $237.715_{8} \rightarrow X_{10} \hfill \approx 159.9004_{10}$
+  \item $291.85_{10} \rightarrow X_{8} \hfill \approx 442.663_{8}$
+  \item $101 0111.1101_{2} \rightarrow X_{10} \hfill = 87.8125_{10}$
+  \item $18.7_{10} \rightarrow X_{2} \hfill \approx 1 0010.1011001_{2}$
+  \item $4321_{5} \rightarrow X_{10} \hfill = 1186_{10}$
+  \item $AB5_{16} \rightarrow X_{8} \hfill = 5265_{8}$
+  \item $1011001_{2} \rightarrow X_{8} \hfill = 131_{8}$
+  \item $431_{5} \rightarrow X_{8} \hfill = 164_{8}$
+  \item $378_{10} \rightarrow X_{2} \hfill = 101111010_{2}$
+  \item $5732_{8} \rightarrow X_{2} \hfill = 101111011010_{2}$
+  \item $AB3_{16} \rightarrow X_{2} \hfill = 101010110011_{2}$
+  \item $432_{5} \rightarrow X_{2} \hfill = 1110101_{2}$§§§
+\end{enumerate}
+
+\subsection{Oktales Rechnen}
+\begin{enumerate}[a.)]
+  \item $237_{8} + 531_{8} \hfill = 770_{8}$
+  \item $371_{8} * 7_{8} \hfill = 3317$
+  \item $2667_{8} : 7_{8} \hfill = 321$
+  \item $256_{8} - 71_{8} \hfill = 165_{8}$
+\end{enumerate}
+
+\subsection{Binäres Rechnen}
+\begin{enumerate}[a.)]
+  \item $1010 + 1011 +111 \hfill = 11100$
+  \item $110111 - 10110 \hfill = 10110$
+  \item $1101 * 1110 \hfill = 10110110$
+  \item $10100011011 : 1011 \hfill \approx 1110110$
+\end{enumerate}
+
+\subsection{Arithmetic in Hexadecimal II}
+\subsubsection{Multiplication}
+\begin{enumerate}[$\bullet$]
+  \item $A123_{16} * 50_{16} \hfill = 325AF0_{16}$
+  \item $1E3E4E_{16} * EEE_{16} \hfill = 1C3863084_{16}$
+  \item $FFF_{16} * 3_{16} \hfill = 2FFD_{16}$
+  \item $C123C_{16} * CCC_{16} \hfill = 9A7957D0_{16}$ 
+\end{enumerate}
+
+\subsubsection{Logical Operations}
+\begin{enumerate}[$\bullet$]
+  \item $1001 1110_{2} \land 0011 1001_{2} \hfill = 0001 1000_{2}$
+  \item $0111 1101_{2} \land 1111 0000_{2} \hfill = 0111 0000_{2}$
+  \item $1100 1001_{2} \land 1111 0010_{2} \hfill = 1100 0000_{2}$
+  \item $1111 1001_{2} \land 1011 0100_{2} \hfill = 1011 0000_{2}$
+  \item $0000 1000_{2} \land 1101 1000_{2} \hfill = 0000 1000_{2}$
+  \item $1001 1110_{2} \lor 0011 1001_{2} \hfill = 1011 1111_{2}$
+  \item $0111 1101_{2} \lor 1111 0000_{2} \hfill = 1111 1101_{2}$
+  \item $1100 1001_{2} \lor 1111 0010_{2} \hfill = 1111 1011_{2}$
+  \item $1111 1001_{2} \lor 1011 0100_{2} \hfill = 1111 1101_{2}$
+  \item $0000 1000_{2} \lor 1101 1000_{2} \hfill = 1101 1000_{2}$
+  \item $1001 1110_{2} \oplus 0011 1001_{2} \hfill = 1010 0111_{2}$
+  \item $0111 1101_{2} \oplus 1111 0000_{2} \hfill = 1000 1101_{2}$
+  \item $1100 1001_{2} \oplus 1111 0010_{2} \hfill = 0011 1011_{2}$
+  \item $1111 1001_{2} \oplus 1011 0100_{2} \hfill = 0100 1101_{2}$
+  \item $0000 1000_{2} \oplus 1101 1000_{2} \hfill = 1101 0000_{2}$
+  \item $\lnot 0000 1010_{2} \hfill = 1111 0101_{2}$
+  \item $\lnot 1010 1110_{2} \hfill = 0101 0001_{2}$
+  \item $\lnot 0001 1110_{2} \hfill = 1110 0001_{2}$
+  \item $\lnot 1111 0000_{2} \hfill = 0000 1111_{2}$ 
+\end{enumerate}
+ 
+\subsection{Exercise 4.1.1: Little Endian}
+Compute in decimal numbers the following 32-bit integers in little endian convention.
+\begin{enumerate}[$\bullet$]
+  \item $00 00 01 00_{16} \hfill = 00 01 00 00_{16} = 65536_{10}$
+  \item $00 00 00 F0_{16} \hfill = F0 00 00 00_{16} = 4026531840_{10}$
+  \item $32 05 00 00_{16} \hfill = 00 00 05 32_{16} = 1330_{10}$
+  \item $00 0F F0 F0_{16} \hfill = F0 F0 0F 00_{16} = 4042264320_{10}$
+  \item $A0 C4 00 DD_{16} \hfill = DD 00 C4 A0_{16} = 218154144_{10}$
+\end{enumerate}
+
+Write the value in memory of the following numbers in little endian on a 32-bit computer.
+\begin{enumerate}[$\bullet$]
+  \item $35 \hfill = 23 00 00 00_{16}$
+  \item $90 \hfill = 5A 00 00 00_{16}$
+  \item $150 \hfill = 96 00 00 00_{16}$
+  \item $1003 \hfill = EB 03 00 00_{16}$
+\end{enumerate}
+
+\subsection{Exercise 4.1.2: Signed integers}
+Using the two's complement notation write the representation of the following numbers of two bytes. Write the result in hexadecimal.
+\begin{enumerate}
+  \item $100 \hfill = $
+  \item $67 \hfill = $
+  \item $-10 \hfill = $
+  \item $-5 \hfill = $
+  \item $-67 \hfill = $
+  \item $-130 \hfill = $
+  \item $-89 \hfill = $
+  \item $-255 \hfill = $
+\end{enumerate}
+
+Execute the following additions in hexadecimal (using two's complement notation):
+\begin{enumerate}
+  \item $100 -67 \hfill = $
+  \item $67 -5 \hfill = $
+  \item $-67-5 \hfill = $
+\end{enumerate}
+
+\subsection{Exerise 4.13: Unsigned Integers with Bias}
+Compute the value of the following unsigned integers with the bias 127 (e.g -10 is represented by the number 117 and 20 is represented by the number 147). Write the number in hexadecimal form.
+\begin{enumerate}
+  \item 0
+  \item 10
+  \item 120
+  \item -20
+  \item -15
+  \item -109
+  \item -76
+  \item -38
+\end{enumerate}
+
+\end{document}
