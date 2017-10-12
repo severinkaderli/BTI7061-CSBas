@@ -11,7 +11,7 @@
 \usepackage[shortlabels]{enumitem}
 
 % Definitionen auf neuer Zeile
-\setdescription{labelsep=\textwidth}
+\setdescription{labelsep=\textwidth} 
   
 % Define 'variables'
 \newcommand{\noteDate}{2017-09-18}
@@ -264,35 +264,45 @@ Write the value in memory of the following numbers in little endian on a 32-bit 
 
 \subsection{Exercise 4.1.2: Signed integers}
 Using the two's complement notation write the representation of the following numbers of two bytes. Write the result in hexadecimal.
-\begin{enumerate}
-  \item $100 \hfill = $
-  \item $67 \hfill = $
-  \item $-10 \hfill = $
-  \item $-5 \hfill = $
-  \item $-67 \hfill = $
-  \item $-130 \hfill = $
-  \item $-89 \hfill = $
-  \item $-255 \hfill = $
+\begin{enumerate}[$\bullet$]
+  \item $100 \hfill = 64_{16}$
+  \item $67 \hfill = 43_{16}$
+  \item $-10 \hfill = F6_{16}$
+  \item $-5 \hfill = FB_{16}$
+  \item $-67 \hfill = BD_{16}$
+  \item $-130 \hfill = F7E_{16}$
+  \item $-89 \hfill = A7_{16}$
+  \item $-255 \hfill = F01_{16}$
 \end{enumerate}
 
 Execute the following additions in hexadecimal (using two's complement notation):
-\begin{enumerate}
-  \item $100 -67 \hfill = $
-  \item $67 -5 \hfill = $
-  \item $-67-5 \hfill = $
+\begin{enumerate}[$\bullet$]
+  \item $100 -67 \hfill = 21_{16}$
+  \item $67 -5 \hfill = 3E_{16}$
+  \item $-67-5 \hfill = B7_{16}$
 \end{enumerate}
 
-\subsection{Exerise 4.13: Unsigned Integers with Bias}
+\subsection{Exercise 4.1.3: Unsigned Integers with Bias}
 Compute the value of the following unsigned integers with the bias 127 (e.g -10 is represented by the number 117 and 20 is represented by the number 147). Write the number in hexadecimal form.
 \begin{enumerate}
-  \item 0
-  \item 10
-  \item 120
-  \item -20
-  \item -15
-  \item -109
-  \item -76
-  \item -38
+  \item $0 \hfill = 127 = 7F_{16}$
+  \item $10 \hfill = 137 = 89_{16}$
+  \item $120 \hfill = 247 = F7_{16}$
+  \item $-20 \hfill = 107 = 6B_{16}$
+  \item $-15 \hfill = 112 = 70_{16}$
+  \item $-109 \hfill = 18 = 12_{16}$
+  \item $-76 \hfill = 51 = 33_{16}$
+  \item $-38 \hfill = 89 = 59_{16}$
+\end{enumerate}
+
+\subsection{Exercise 4.1.4: Floating Point Numbers}
+Compute the representation of the following numbers on 32 bits (write it in bits, then in hexadecimal notation):
+\begin{enumerate}[$\bullet$]
+  \item $0.5 \hfill = 3F00 0000_{16}$
+  \item $12 \hfill = 4140 0000_{16}$
+  \item $34.25 \hfill = 4209 0000_{16}$
+  \item $0.1 \hfill = 3DCC CCCC_{16}$
+  \item $10.98 \hfill = 412FAE14_{16}$
 \end{enumerate}
 
 \end{document}
