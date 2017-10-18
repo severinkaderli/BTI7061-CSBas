@@ -23,6 +23,7 @@ count:
 	jmp	count 				; and loop again
 	
 printOriginal:
+	push	rax				; Push the length of the string
 	push	rbx				; Push the address of the last character to the stack
 	mov	rdx, rax			; Set rdx to the length of string we calculated
 	mov	rax, 4				; sys_write
@@ -30,24 +31,35 @@ printOriginal:
 	mov	rcx, String			; Write the original string
 	int	0x80
 	call	printLinefeed			; Write a line feed
-		
+	
+invert:
 	pop	rcx				; Pop the address of the last character into rcx
 	dec	rcx				; Decrement the address so we don't write the $
+	mov	rbx, String	
+
+swap:
+	cmp	rbx, rcx			; Compare rbx and rcx
+	jge	printInverted			; If rbx is the same or greater than rbx, jump
+	mov	dl, [rbx]			; Temporarily save the character from rbx
+	mov	al, [rcx]			; Temporarily save the character from rcx
+	mov	byte [rbx], al			; Swap character at position rbx with the one from [rcx]
+	mov	byte [rcx], dl			; Swap character at position rcx with the one from [rbx]
+	dec	rcx		
+	inc	rbx				
+	jmp	swap	
+
 
 printInverted:
-	cmp	rcx, String			; Check if we're again at the beginning of the string
-	jl	exit				; If we are we go to the end
-	push	rcx				; Save rcx on the stack
-	mov	rax, 4				; sys_write
-	mov	rbx, 1				; Standard output
-	mov	rdx, 1				; 1 character
-	int	0x80	
-	pop	rcx				; Pop back the address to rcx
-	dec	rcx				; Decrement the character address
-	jmp	printInverted			; Loop
+	pop	rdx
+	mov	rax, 4
+	mov	rbx, 1
+	mov	rcx, String
+	int	0x80
+	call 	printLinefeed
+	jmp 	exit
 
 printLinefeed:
-	mov	rax, 4				; Procedure to write a linefeed
+	mov	rax, 4		
 	mov	rbx, 1
 	mov	rcx, Linefeed
 	mov	rdx, LinefeedLength
@@ -55,7 +67,6 @@ printLinefeed:
 	ret
 
 exit:
-	call 	printLinefeed			; We want a final linefeed before exiting
 	mov	rax, 1				
 	mov	rbx, 0
 	int	0x80
