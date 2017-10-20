@@ -153,11 +153,45 @@ Eine Addition kann man im Zweierkomplement ohne Problem durchführen. Für eine 
 \subsubsection{Kommazahlen}
 Nach dem IEEE 754 Standard werden die Kommazahlen binär kodiert. Das erste Bit ist dafür für das Vorzeichen zuständig. Die nächsten 11 Bits sind für den Exponenten und die letzten 52 Bits sind für die Mantisse zuständig. Je nach Standard können die Bit-Anzahl variieren aber im Prinzip funktioniert es immer gleich.
 
-
-{\bf Beispiel}:\\
-Man möchte die Zahl $326.78 * 10^{0}$ nach dem IEEE 754 Standard kodieren. Zuerst normalisiert man die Zahl so, dass sie nur in Nachkommastellen ist. Also wird sie zu $0.326.78 * 10^{3}$
+TODO: Finish explanation
 
 Der Exponent ist hier dabei nicht im Zweierkomplement hinterlegt sondern in der sogenannten "Biased Form". Für diese Form muss man zuerst einen Biased Faktor berechnen. Dieser berechnet sich durch die Formel $2^{n-1}-1 = 127$ wobei $n$ die Anzahl Bits für den Exponenten ist. Im Falle, wenn der Exponent aus 8 Bits besteht ist der Biased Faktor $2^{7} -1 = 127$.
+
+\newpage
+\section{Assembler}
+Im nachfolgendem Kapitel wird die Programmierung mit Assembler behandelt. Für dieses Modul programmieren wir unter Linux mit dem NASM-Assembler.
+
+\subsection{Make}
+Make ist ein Build-System mit dem man für den Build-Prozess von Programmen Abhängigkeiten definieren kann. Diese Abhängigkeiten werden in einem sogenannten "makefile" definieren.
+
+Folgendes ist ein Beispiel für ein makefile, welches aus einer "hello.asm" Datei ein lauffähiges Programm erstellt:
+\begin{minted}{make} 
+  all: hello
+  
+  clean:
+    rm -f *.o > /dev/null
+  
+  hello: hello.o
+    ld -o hello hello.o
+  
+  hello.o: hello.asm
+    nasm -f elf64 -g -F dwarf hello.asm
+\end{minted}
+
+Innerhalb dieser Datei kann man nun "Targets" wie hello.o definieren. Nach dem Doppelpunkt gibt man dann die Abhängigkeiten dafür an. In diesem Fall ist es hello.asm. Wenn diese Abhängigkeit erfüllt ist, wird dann der angegebene Befehl ausgeführt. So wird dann das ganze makefile ausgeführt bis alle Targets erfüllt sind.
+
+Im obigen makefile wird zusätzlich auch noch ein Befehl namens clean definiert. Dieser führt einfach direkt den angebenenen Befehl aus.
+
+Das makefile führt man Schlussendlich mit ganz einfach mit "make" aus. Definierte Befehle kann mit mit z. B. "make clean" ausführen.
+
+\subsection{Aufbau eines Programmes}
+\begin{minted}{asm}
+  mov rax, rbx
+\end{minted}
+
+\subsection{Instruktionen}
+
+
 
 
 
@@ -198,7 +232,7 @@ Der Exponent ist hier dabei nicht im Zweierkomplement hinterlegt sondern in der 
 
 \subsection{Oktales Rechnen}
 \begin{enumerate}[a.)]
-  \item $237_{8} + 531_{8} \hfill = 770_{8}$
+  \item $237_{8} + 531_{8} \hfill = 770_{8}$ 
   \item $371_{8} * 7_{8} \hfill = 3317$
   \item $2667_{8} : 7_{8} \hfill = 321$
   \item $256_{8} - 71_{8} \hfill = 165_{8}$
@@ -293,7 +327,7 @@ Compute the value of the following unsigned integers with the bias 127 (e.g -10 
   \item $-109 \hfill = 18 = 12_{16}$
   \item $-76 \hfill = 51 = 33_{16}$
   \item $-38 \hfill = 89 = 59_{16}$
-\end{enumerate}
+\end{enumerate} 
 
 \subsection{Exercise 4.1.4: Floating Point Numbers}
 Compute the representation of the following numbers on 32 bits (write it in bits, then in hexadecimal notation):
