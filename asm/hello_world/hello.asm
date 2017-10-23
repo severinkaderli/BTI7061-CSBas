@@ -1,13 +1,11 @@
 section	.data
-	Message: db "Hello, World!"
-	MessageLength: equ $ - Message
-
-section .bss
+	Message: 	db "Hello, World!"
+	MessageLength: 	equ $ - Message
 
 section .text
 	global	_start
 
-EXTERN	printText, printNewline
+EXTERN	printText, printNewline, convertNumberToString
 
 _start:
 	mov	rcx, Message
