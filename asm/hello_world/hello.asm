@@ -1,5 +1,5 @@
 section	.data
-	Message: db "Hello, World!", 0xA
+	Message: db "Hello, World!"
 	MessageLength: equ $ - Message
 
 section .bss
@@ -7,13 +7,15 @@ section .bss
 section .text
 	global	_start
 
+EXTERN	printText, printNewline
+
 _start:
-	mov	rax, 4
-	mov	rbx, 1
 	mov	rcx, Message
 	mov	rdx, MessageLength
-	int	0x80	
+	call	printText
+	call	printNewline
 
+exit:
 	mov	rax, 1
 	mov	rbx, 0
 	int	0x80
