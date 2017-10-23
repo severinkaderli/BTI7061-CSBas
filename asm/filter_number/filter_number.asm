@@ -7,6 +7,7 @@
 section	.data
 	String:		db "adb7fe6fds3j2$"
 	Numbers:	db "              "
+	Linefeed:	db 0xA
 
 section .bss
 
@@ -68,10 +69,35 @@ filterNumbersFromString:
 	pop	rbx	
 	ret
 
+; Prints a linefeed character to the console
+printLinefeed:
+	push	rax
+	push	rbx
+	push	rcx
+	push	rdx
+	mov	rax, 4
+	mov	rbx, 1
+	mov	rcx, Linefeed
+	mov	rdx, 1	
+	int	0x80
+	pop	rax
+	pop	rbx
+	pop	rcx
+	pop	rdx
+	ret
+
 _start:
 	mov	rbx, String
 	mov	rcx, Numbers
 	call	filterNumbersFromString
+	call	getLengthOfString
+
+	mov	rdx, rax
+	mov	rax, 4
+	mov	rbx, 1
+	mov	rcx, Numbers
+	int	0x80
+	call	printLinefeed
 
 exit:
 	mov	rax, 1				
