@@ -10,6 +10,15 @@
 \usepackage{enumerate}
 \usepackage[shortlabels]{enumitem}
 
+% Set default settings for minted
+\setminted{linenos=true} 
+
+% Disable stupid red boxes in code highlighting
+\makeatletter 
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
 % Definitionen auf neuer Zeile
 \setdescription{labelsep=\textwidth} 
   
@@ -165,13 +174,13 @@ Im nachfolgendem Kapitel wird die Programmierung mit Assembler behandelt. Für d
 Make ist ein Build-System mit dem man für den Build-Prozess von Programmen Abhängigkeiten definieren kann. Diese Abhängigkeiten werden in einem sogenannten "makefile" definieren.
 
 Folgendes ist ein Beispiel für ein makefile, welches aus einer "hello.asm" Datei ein lauffähiges Programm erstellt:
-\begin{minted}{make} 
+\begin{minted}{makefile} 
   all: hello
   
   clean:
     rm -f *.o > /dev/null
   
-  hello: hello.o
+  hello: hello.o 
     ld -o hello hello.o
   
   hello.o: hello.asm
@@ -185,14 +194,66 @@ Im obigen makefile wird zusätzlich auch noch ein Befehl namens clean definiert.
 Das makefile führt man Schlussendlich mit ganz einfach mit "make" aus. Definierte Befehle kann mit mit z. B. "make clean" ausführen.
 
 \subsection{Aufbau eines Programmes}
+Ein Assembler Programm besteht aus verschiedenen Sektionen. In der ".data" Sektion kann man Daten definieren auf die man später im Code zugreifen kann. Die ".text" Sektion ist dann für den eigentlich Programmcode reserviert.
+
+Der untenstehende Code gibt einfach "Hello, World!" gefolgt von einem Zeilenumbruch aus.
 \begin{minted}{asm}
-  mov rax, rbx
+section .data
+  Message:        db "Hello, World!", 0xA
+  MessageLength:  equ $ - Message
+
+section .text
+  global	_start
+
+_start:
+  mov   rax, 4
+  mov   rbx, 1
+  mov   rcx, Message
+  mov   rdx, MessageLength
+  int   0x80
+
+exit:
+  mov   rax, 1
+  mov   rbx, 0
+  int   0x80
 \end{minted}
 
 \subsection{Instruktionen}
+\subsubsection{MOV}
+Mit der MOV-Instruktion kann man Werte in Register und Speicherorte verschieben.
 
+Der untenstehende Code schiebt den Wert 10 in das Register rax.
+\begin{minted}{asm}
+  mov   rax, 10 
+\end{minted}
 
+\subsubsection{INC}
+Die INC-Instruktion inkrementiert das angegebene Register um 1.
+\begin{minted}{asm}
+  mov   rax, 5
+  inc   rax     ; rax ist nun 6
+\end{minted}
 
+\subsubsection{DEC}
+Die DEC-Instruktion dekrementiert das angegebene Register um 1.
+\begin{minted}{asm}
+  mov   rax, 5
+  dec   rax     ; rax ist nun 4
+\end{minted} 
+
+\subsubsection{ADD}
+Die ADD-Instruktion addiert den Operanden zu angegebenen Register.
+\begin{minted}{asm}
+  mov   rax, 5
+  add   rax, 7  ; rax ist nun 12
+\end{minted} 
+
+\subsubsection{SUB}
+Die SUB-Instruktion subtrahiert den Operanden vom angegebenen Register.
+\begin{minted}{asm}
+  mov   rax, 5
+  sub   rax, 3  ; rax ist nun 2
+\end{minted} 
 
 
 \newpage
