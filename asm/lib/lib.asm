@@ -5,6 +5,7 @@ section	.data
 section .text
 	
 	GLOBAL	printText, printNewline, convertNumberToString, binaryLog
+	GLOBAL	numberToBinaryString
 
 ;******************************************************************************
 ; Prints a text to the console
@@ -87,5 +88,40 @@ binaryLog:
 	inc	rbx		; Otherwise increase rbx by one
 	jmp	.calculate	; and repeat this
 .exit:
+	pop	rax
+	ret
+
+;******************************************************************************
+; Convert a number to a binary string.
+;
+; Input:	eax: The number we want to convert.
+; 		rbx: The address where the string will be stored.
+;
+; Output:	The string will be written to the address in rbx
+;******************************************************************************
+numberToBinaryString:
+	push	rax
+	push	rbx
+	push	rcx
+	push	rdx
+	xor	rcx, rcx		; The iteration counter	
+.loop:
+	push	rax
+	and	eax, 0x8000		; Get the most significant byte
+	mov	edx, eax
+	shr	edx, 31
+	pop	rax
+	add	edx, "0"
+	mov	[rbx + rcx], edx
+
+.prepareIteration:
+	shl	eax, 1
+	inc	rcx
+	cmp	rcx, 32
+	jne	.loop
+
+	pop	rdx
+	pop	rcx
+	pop	rbx
 	pop	rax
 	ret
