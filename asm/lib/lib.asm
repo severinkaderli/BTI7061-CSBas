@@ -4,7 +4,7 @@ section	.data
 
 section .text
 	
-	GLOBAL	printText, printNewline, convertNumberToString
+	GLOBAL	printText, printNewline, convertNumberToString, binaryLog
 
 ;******************************************************************************
 ; Prints a text to the console
@@ -68,5 +68,24 @@ convertNumberToString:
 	pop	rdx
 	pop	rcx
 	pop	rbx
+	pop	rax
+	ret
+
+;******************************************************************************
+; Calculate the binary logarithm of a given number.
+;
+; Input:	rax: That number we want the logarithm of.
+;
+; Output:	rbx: The binary logarithm of rax
+;******************************************************************************
+binaryLog:
+	push	rax
+	xor	rbx, rbx	; This will be the logarithm
+.calculate:	
+	shr	rax, 1		; Divide rax by 2
+	jz	.exit		; If it's 0 exit the procedure
+	inc	rbx		; Otherwise increase rbx by one
+	jmp	.calculate	; and repeat this
+.exit:
 	pop	rax
 	ret
