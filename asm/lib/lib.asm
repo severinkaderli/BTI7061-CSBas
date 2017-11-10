@@ -107,7 +107,7 @@ numberToBinaryString:
 	xor	rcx, rcx		; The iteration counter	
 .loop:
 	push	rax
-	and	eax, 0x8000		; Get the most significant byte
+	and	eax, 0x80000000	; Get the most significant byte
 	mov	edx, eax
 	shr	edx, 31
 	pop	rax
