@@ -42,6 +42,21 @@ printNewline:
 	pop	rcx
 	ret
 
+clearNumberString:
+	push	rax
+	push	rbx
+	push	rcx
+	xor	rax, rax
+	mov	rcx, 15
+.clear:
+	mov	[rbx + rcx], al
+	dec	rcx
+	jnz	.clear
+	pop	rcx
+	pop	rbx
+	pop	rax
+ret
+
 ;******************************************************************************
 ; Converts a number to an ascii string.
 ;
@@ -55,7 +70,8 @@ convertNumberToString:
 	push	rbx
 	push	rcx
 	push	rdx
-	add	rbx, 15		; TODO: Don't hardcode this!
+	call	clearNumberString
+	add	rbx, 15
 	mov	ecx, 0xA
 .division:
 	xor	edx, edx
