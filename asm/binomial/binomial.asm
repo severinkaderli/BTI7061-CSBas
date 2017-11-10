@@ -1,6 +1,6 @@
 section	.data
 	N: 		db 30
-	K:	 	db 31
+	K:	 	db 10
 	
 section .bss
 	NumberString:	resb 16
