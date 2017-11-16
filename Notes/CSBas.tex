@@ -49,7 +49,7 @@
 \thispagestyle{fancy}
 
 % Actual content
-\section{Modulinformationen}
+\section{Modulinformationen} 
 Dozent: Ueli Schrag \\
 Webseite des Kurses: http://www.benoist.ch/CSbasics/
 \subsection{Moodle}
@@ -254,6 +254,13 @@ Die SUB-Instruktion subtrahiert den Operanden vom angegebenen Register.
   mov   rax, 5
   sub   rax, 3  ; rax ist nun 2
 \end{minted} 
+
+\subsection{Strings}
+\subsubsection{STOSB}
+Copies the value in al to rdi and increments rdi by one.
+
+\subsubsection{MOVSB}
+Moves to contents from memory from rsi to the memory of rdi.
 
 
 \newpage
