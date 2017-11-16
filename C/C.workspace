@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="C" Database="">
+  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project" Active="No"/>
+  <Project Name="square" Path="square/square.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="HelloWorld" ConfigName="Debug"/>
+      <Project Name="square" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="HelloWorld" ConfigName="Release"/>
+      <Project Name="square" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
