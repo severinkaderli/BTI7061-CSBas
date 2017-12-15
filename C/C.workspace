@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="C" Database="">
-  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project" Active="No"/>
+  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project" Active="Yes"/>
   <Project Name="square" Path="square/square.project" Active="No"/>
   <Project Name="fibonacci" Path="fibonacci/fibonacci.project" Active="No"/>
   <Project Name="circle" Path="circle/circle.project" Active="No"/>
-  <Project Name="readfile" Path="readfile/readfile.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -12,7 +11,7 @@
       <Project Name="square" ConfigName="Debug"/>
       <Project Name="fibonacci" ConfigName="Debug"/>
       <Project Name="circle" ConfigName="Debug"/>
-      <Project Name="readfile" ConfigName="Debug"/>
+      <Project Name="Exercise_10.1" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -20,7 +19,7 @@
       <Project Name="square" ConfigName="Release"/>
       <Project Name="fibonacci" ConfigName="Release"/>
       <Project Name="circle" ConfigName="Release"/>
-      <Project Name="readfile" ConfigName="Release"/>
+      <Project Name="Exercise_10.1" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
