@@ -1,17 +1,11 @@
 # CSBas Final Exam - Notizen - Kaderli Severin
 
-## 
-
-## ASM
-
-
-
 ## C
 ### Compiling and linking
 ```bash
-gcc -c main.c
+gcc -c main.c 
 gcc -o main main.o
-```
+``` 
 ### IO
 ```c
 #inclde <stdio.h>
