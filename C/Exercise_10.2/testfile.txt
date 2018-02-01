@@ -1,0 +1,2 @@
+einfacher text um das programm auszuprobieren.
+sollte nun alles uppercase sein.
